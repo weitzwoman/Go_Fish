@@ -52,8 +52,10 @@ Game.prototype.turns = function(request) {
   if (this.currentPlayer === player1) {
     for (var i = 0; i < player2.hand.length; i++) {
       if (player2.hand[i].rank === request) {
-        return ("hit!");
-      } 
+        console.log("hit!");
+        player1.hand.push(player2.hand[i]);
+        console.log(player1);
+      }
     }
   }
 }
