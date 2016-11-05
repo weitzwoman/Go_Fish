@@ -35,14 +35,23 @@ Game.prototype.makeDeck = function() {
 }
 
 Game.prototype.deal = function() {
-  for (var index = 0; index < 7; index++) {
+  for (var index = 0; index < 5; index++) {
     var deal = this.deck.pop(index);
     this.currentPlayer.hand.push(deal);
   }
   console.log(player1);
+  this.currentPlayer = player2;
+
+  /// DON'T REPEAT YOURSELF
+  for (var index = 0; index < 5; index++) {
+    var deal = this.deck.pop(index);
+    this.currentPlayer.hand.push(deal);
+  }
+  console.log(player2);
+  this.currentPlayer = player1;
 }
 
-Game.prototype.switchplayers = function() {
+Game.prototype.turns = function() {
 
 }
 
