@@ -1,9 +1,6 @@
 var suits = ["Hearts", "Diamonds", "Spades", "Clubs"];
 var ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"];
 
-var suits = ["Hearts", "Diamonds", "Spades", "Clubs"];
-var ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"];
-
 function Card(suit,rank) {
   this.suit = suit;
   this.rank = rank;
@@ -17,7 +14,7 @@ function Game() {
 Game.prototype.makeDeck = function() {
   for (var i = 0; i < suits.length; i++) {
    for (var j = 0; j < ranks.length; j++) {
-        var newCard = new Card(ranks[j], suits[i]);
+        var newCard = new Card(suits[i], ranks[j]);
         this.deck.push(newCard);
       }
     }
@@ -51,8 +48,14 @@ Game.prototype.deal = function() {
   this.currentPlayer = player1;
 }
 
-Game.prototype.turns = function() {
-
+Game.prototype.turns = function(request) {
+  if (this.currentPlayer === player1) {
+    for (var i = 0; i < player2.hand.length; i++) {
+      if (player2.hand[i].rank === request) {
+        return ("hit!");
+      } 
+    }
+  }
 }
 
 var player1 = new Player();
@@ -66,9 +69,7 @@ $(document).ready(function(){
   $("#test").click(function(){
     var game = new Game();
     game.makeDeck();
-    //console.log(game);
     game.deal();
-    console.log(game.deck);
-
+    game.turns("2");
   });
 });
