@@ -1,52 +1,65 @@
-var suits = ["Hearts", "Diamonds", "Spades", "Clubs"]
-var ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]
-var deck = [];
+var suits = ["Hearts", "Diamonds", "Spades", "Clubs"];
+var ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"];
 
-function Card(suit, rank) {
+var suits = ["Hearts", "Diamonds", "Spades", "Clubs"];
+var ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"];
+
+function Card(suit,rank) {
   this.suit = suit;
   this.rank = rank;
 }
 
-function makeDeck() {
+function Game() {
+  this.currentPlayer = player1;
+  this.deck = [];
+}
+
+Game.prototype.makeDeck = function() {
   for (var i = 0; i < suits.length; i++) {
-    for (var j = 0; j < ranks.length; j++) {
-      var newCard = new Card(ranks[j], suits[i]);
-      deck.push(newCard);
+   for (var j = 0; j < ranks.length; j++) {
+        var newCard = new Card(ranks[j], suits[i]);
+        this.deck.push(newCard);
+      }
     }
+  var k = 0;
+  var l = 0;
+  var temp = null;
+
+  for (k = this.deck.length - 1; k > 0; k -= 1) {
+    l = Math.floor(Math.random() * (k + 1))
+    temp = this.deck[k]
+    this.deck[k] = this.deck[l]
+    this.deck[l] = temp
   }
-  return deck;
+  return this.deck;
 }
 
-function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
-
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
-
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
-  return array;
-}
-
-makeDeck();
-shuffle(deck);
-
-var player1Hand = [];
-var player2Hand = [];
-
-function deal() {
+Game.prototype.deal = function() {
   for (var index = 0; index < 7; index++) {
-    player1Hand = deck.pop(index);
+    var deal = this.deck.pop(index);
+    this.currentPlayer.hand.push(deal);
   }
-  return player1Hand;
+  console.log(player1);
 }
 
-deal();
+Game.prototype.switchplayers = function() {
+
+}
+
+var player1 = new Player();
+var player2 = new Player();
+
+function Player() {
+  this.hand = [];
+}
+
+$(document).ready(function(){
+  $("#test").click(function(){
+    var game = new Game();
+    game.makeDeck();
+    //console.log(game);
+    game.deal();
+    console.log(game.deck);
+
+  });
+});
