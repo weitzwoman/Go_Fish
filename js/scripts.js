@@ -72,6 +72,6 @@ $(document).ready(function(){
     var game = new Game();
     game.makeDeck();
     game.deal();
-    game.turns("2");
+    game.turns("2"); ///this will take input eventually//
   });
 });
