@@ -26,15 +26,17 @@ Game.prototype.makeDeck = function() {
     l = Math.floor(Math.random() * (k + 1))
     temp = this.deck[k]
     this.deck[k] = this.deck[l]
-    this.deck[l] = temp
+    this.deck[l] = temp;
   }
   return this.deck;
 }
 
+var outputArray = [];
 Game.prototype.deal = function() {
   for (var index = 0; index < 5; index++) {
     var deal = this.deck.pop(index);
     this.currentPlayer.hand.push(deal);
+    outputArray.push(deal);
   }
   this.currentPlayer = player2;
 
@@ -44,6 +46,8 @@ Game.prototype.deal = function() {
     this.currentPlayer.hand.push(deal);
   }
   this.currentPlayer = player1;
+
+  return player1.hand;
 }
 
 
@@ -57,6 +61,7 @@ Game.prototype.turns = function(request) {
         goFish.push(player2.hand[i]);
         player2.hand.splice(i, 1);
         checkBook(player1.hand, request, "Player 1");
+        return "Hit";
       }
     }
 
@@ -69,6 +74,7 @@ Game.prototype.turns = function(request) {
       player1.hand.push(draw);
       console.log(draw);
       checkBook(player1.hand, draw.rank, "Player 1");
+      return "Go Fish";
     } else {
       this.currentPlayer = player2;
     }
@@ -100,9 +106,6 @@ Game.prototype.turns = function(request) {
 
   }
   this.currentPlayer = player1;
-  console.log("Player 1 length" + player1.hand.length);
-  console.log("Player 2 length" + player2.hand.length);
-  console.log("deck" + this.deck.length);
 
 }
 
@@ -118,11 +121,9 @@ function checkBook(hand, rank, player) {
     }
   }
 
-  console.log(book);
   if (book.length === 4 && player === "Player 1") {
     alert("You created a book of " + rank + "'s!");
     player1Counter++;
-    console.log("Player 1 counter: " + player1Counter);
 
     // for (var e = 0; e < hand.length; e++) {
     //   if (hand[e].rank === rank) {
@@ -130,11 +131,9 @@ function checkBook(hand, rank, player) {
     //     hand.splice(e, 1);
     //   }
     // }
-    console.log(hand);
   } else if (book.length === 4 & player === "Computer") {
     alert("Computer create a book of " + rank + "'s!")
     player2Counter++;
-    console.log("Player 2 counter: " + player2Counter);
   }
 
   if (player1Counter >= 7) {
@@ -157,84 +156,11 @@ $(document).ready(function(){
   $("#test").click(function(){
     var game = new Game();
     game.makeDeck();
-    game.deal();
-    // input
-    game.turns("2");
-    // input
-    game.turns("3");
-    game.turns("4");
-    // input
-    game.turns("5");
-    game.turns("6");
-    // input
-    game.turns("7");
-    game.turns("8");
-    game.turns("9");
-    game.turns("10");
-    // input
-    game.turns("Jack");
-    game.turns("Queen");
-    // input
-    game.turns("King");
-    game.turns("Ace");
-    // input
-    game.turns("2");
-    // input
-    game.turns("3");
-    game.turns("4");
-    // input
-    game.turns("5");
-    game.turns("6");
-    // input
-    game.turns("7");
-    game.turns("8");
-    game.turns("9");
-    game.turns("10");
-    // input
-    game.turns("Jack");
-    game.turns("Queen");
-    // input
-    game.turns("King");
-    game.turns("Ace");
+    var hand = game.deal();
+    $("#output").text(hand);
+    var guess = $("#userGuess").val();
+    game.turns(guess);
+    $("#output").text();
 
-    game.turns("2");
-    // input
-    game.turns("3");
-    game.turns("4");
-    // input
-    game.turns("5");
-    game.turns("6");
-    // input
-    game.turns("7");
-    game.turns("8");
-    game.turns("9");
-    game.turns("10");
-    // input
-    game.turns("Jack");
-    game.turns("Queen");
-    // input
-    game.turns("King");
-    game.turns("Ace");
-
-    game.turns("2");
-    // input
-    game.turns("3");
-    game.turns("4");
-    // input
-    game.turns("5");
-    game.turns("6");
-    // input
-    game.turns("7");
-    game.turns("8");
-    game.turns("9");
-    game.turns("10");
-    // input
-    game.turns("Jack");
-    game.turns("Queen");
-    // input
-    game.turns("King");
-    game.turns("Ace");
-    // input
-    // input
   });
 });
