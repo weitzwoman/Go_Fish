@@ -56,20 +56,17 @@ Game.prototype.turns = function(request) {
         player1.hand.push(player2.hand[i]);
         goFish.push(player2.hand[i]);
         player2.hand.splice(i, 1);
-        console.log(player1.hand);
-        console.log(request);
-        checkBook(player1.hand, request);
+        checkBook(player1.hand, request, "Player 1");
       }
     }
 
     if (goFish.length === 0) {
       var draw = this.deck.pop(0);
       player1.hand.push(draw);
-      checkBook(player1.hand, draw.rank);
+      checkBook(player1.hand, draw.rank, "Player 1");
     }
 
     this.currentPlayer = player2;
-    console.log("switched players!")
   }
 
   if (this.currentPlayer === player2) {
@@ -81,32 +78,34 @@ Game.prototype.turns = function(request) {
         player2.hand.push(player1.hand[i]);
         goFish2.push(player1.hand[i]);
         player1.hand.splice(i, 1);
+        checkBook(player2.hand, computerRequest, "Computer");
       }
     }
 
     if (goFish2.length === 0) {
       var draw = this.deck.pop(0);
       player2.hand.push(draw);
+      checkBook(player2.hand, draw, "Computer");
     }
 
   }
   this.currentPlayer = player1;
-  console.log("switched players!");
 
 }
 
-function checkBook(hand, rank) {
+function checkBook(hand, rank, player) {
   var book = [];
   for (var q = 0; q < hand.length; q++) {
     if (hand[q].rank === rank) {
-      console.log("this worked!");
       book.push(hand[q]);
     }
   }
 
   console.log(book);
-  if (book.length === 4) {
-    console.log("book created!");
+  if (book.length === 4 && player === "Player 1") {
+    alert("You created a book of " + rank + "'s!");
+  } else if (book.length === 4 & player === "Computer") {
+    alert("Computer create a book of " + rank + "'s!")
   }
 }
 
@@ -135,11 +134,8 @@ $(document).ready(function(){
     game.turns("2");
     // input
 
-    ame.turns("3");
-    game.turns("2");
-    // input
-    game.turns("3");
-    game.turns("2");
+
+
 
 
     console.log(player1);
