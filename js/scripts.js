@@ -64,9 +64,42 @@ Game.prototype.turns = function(request) {
     }
 
     if (goFish.length === 0) {
-      console.log("it worked");
+      console.log("Go Fish");
+      var draw = this.deck.pop(0);
+      player1.hand.push(draw);
+      console.log(player1);
+      console.log(this.deck);
     }
+
+    this.currentPlayer = player2;
   }
+
+  if (this.currentPlayer === player2) {
+    var computerRequest = player2.hand[Math.floor(Math.random() * player2.hand.length)];
+    console.log(computerRequest);
+
+    for (var i = 0; i < player1.hand.length; i++) {
+      if (player1.hand[i].rank === computerRequest.rank) {
+        console.log("hit!");
+        player2.hand.push(player1.hand[i]);
+        goFish.push(player1.hand[i]);
+        player1.hand.splice(i, 1);
+        console.log(player1);
+        console.log(player2);
+      }
+    }
+
+    if (goFish.length === 0) {
+      console.log("Go Fish");
+      var draw = this.deck.pop(0);
+      player2.hand.push(draw);
+      console.log(player2);
+      console.log(this.deck);
+    }
+
+  //  this.currentPlayer = player1;
+  }
+
 }
 
 var player1 = new Player();
