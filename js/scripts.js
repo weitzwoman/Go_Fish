@@ -11,6 +11,10 @@ function Game() {
   this.deck = [];
 }
 
+function Player() {
+  this.hand = [];
+}
+
 Game.prototype.makeDeck = function() {
   for (var i = 0; i < suits.length; i++) {
    for (var j = 0; j < ranks.length; j++) {
@@ -31,12 +35,11 @@ Game.prototype.makeDeck = function() {
   return this.deck;
 }
 
-var outputArray = [];
+var output = "";
 Game.prototype.deal = function() {
   for (var index = 0; index < 5; index++) {
     var deal = this.deck.pop(index);
     this.currentPlayer.hand.push(deal);
-    outputArray.push(deal);
   }
   this.currentPlayer = player2;
 
@@ -47,7 +50,12 @@ Game.prototype.deal = function() {
   }
   this.currentPlayer = player1;
 
-  return player1.hand;
+  for (var i=0; i<player1.hand.length; i++) {
+    var card1 = player1.hand[i].rank + " of " + player1.hand[i].suit;
+    output += card1 + " ";
+  }
+
+  return output;
 }
 
 
@@ -148,16 +156,14 @@ function checkBook(hand, rank, player) {
 var player1 = new Player();
 var player2 = new Player();
 
-function Player() {
-  this.hand = [];
-}
+
 
 $(document).ready(function(){
   $("#test").click(function(){
     var game = new Game();
     game.makeDeck();
     var hand = game.deal();
-    $("#output").text(hand);
+    $("#userCardHand").text(hand);
     var guess = $("#userGuess").val();
     game.turns(guess);
     $("#output").text();
