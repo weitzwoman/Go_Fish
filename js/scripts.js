@@ -98,12 +98,20 @@ function checkBook(hand, rank, player) {
   for (var q = 0; q < hand.length; q++) {
     if (hand[q].rank === rank) {
       book.push(hand[q]);
+
     }
   }
 
   console.log(book);
   if (book.length === 4 && player === "Player 1") {
+    console.log(hand);
     alert("You created a book of " + rank + "'s!");
+    for (var x = 0; x < hand.length + 1; x++) {
+      if (hand[x].rank === rank) {
+        hand.splice(x, 1);
+      }
+    }
+    console.log(hand);
   } else if (book.length === 4 & player === "Computer") {
     alert("Computer create a book of " + rank + "'s!")
   }
@@ -132,13 +140,33 @@ $(document).ready(function(){
     // input
     game.turns("3");
     game.turns("2");
+    game.turns("3");
+    game.turns("2");
     // input
-
-
-
-
-
-    console.log(player1);
-    console.log(player2);
+    game.turns("3");
+    game.turns("2");
+    // input
+    game.turns("3");
+    game.turns("2");
+    // input
+    game.turns("3");
+    game.turns("2");
+    // input
+    game.turns("3");
+    game.turns("2");
+    // input
+    game.turns("3");
+    game.turns("2");
+    // input
+    game.turns("3");
+    game.turns("2");
+    // input
+    game.turns("3");
+    game.turns("2");
+    // input
+    game.turns("3");
+    game.turns("2");
+    // input
+    // input
   });
 });
