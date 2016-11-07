@@ -85,7 +85,7 @@ Game.prototype.turns = function(request) {
     if (goFish2.length === 0) {
       var draw = this.deck.pop(0);
       player2.hand.push(draw);
-      checkBook(player2.hand, draw, "Computer");
+      checkBook(player2.hand, draw.rank, "Computer");
     }
 
   }
@@ -106,9 +106,18 @@ function checkBook(hand, rank, player) {
   if (book.length === 4 && player === "Player 1") {
     console.log(hand);
     alert("You created a book of " + rank + "'s!");
-    for (var x = 0; x < hand.length + 1; x++) {
-      if (hand[x].rank === rank) {
-        hand.splice(x, 1);
+    // hand.forEach(function(card) {
+    //   if (card.rank === rank) {
+    //     hand.splice(card, 1);
+    //   }
+    //
+    //
+    // });
+    for (var e = 0; e < hand.length; e++) {
+      if (hand[e].rank === rank) {
+        debugger;
+        console.log(hand[e]);
+        hand.splice(e, 1);
       }
     }
     console.log(hand);
