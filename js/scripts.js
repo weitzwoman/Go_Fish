@@ -56,12 +56,16 @@ Game.prototype.turns = function(request) {
         player1.hand.push(player2.hand[i]);
         goFish.push(player2.hand[i]);
         player2.hand.splice(i, 1);
+        console.log(player1.hand);
+        console.log(request);
+        checkBook(player1.hand, request);
       }
     }
 
     if (goFish.length === 0) {
       var draw = this.deck.pop(0);
       player1.hand.push(draw);
+      checkBook(player1.hand, draw.rank);
     }
 
     this.currentPlayer = player2;
@@ -91,8 +95,19 @@ Game.prototype.turns = function(request) {
 
 }
 
-function book() {
-  
+function checkBook(hand, rank) {
+  var book = [];
+  for (var q = 0; q < hand.length; q++) {
+    if (hand[q].rank === rank) {
+      console.log("this worked!");
+      book.push(hand[q]);
+    }
+  }
+
+  console.log(book);
+  if (book.length === 4) {
+    console.log("book created!");
+  }
 }
 
 var player1 = new Player();
@@ -111,8 +126,22 @@ $(document).ready(function(){
     game.turns("2");
     // input
     game.turns("3");
+    game.turns("2");
     // input
-    game.turns("4");
+    game.turns("3");
+    game.turns("2");
+    // input
+    game.turns("3");
+    game.turns("2");
+    // input
+
+    ame.turns("3");
+    game.turns("2");
+    // input
+    game.turns("3");
+    game.turns("2");
+
+
     console.log(player1);
     console.log(player2);
   });
