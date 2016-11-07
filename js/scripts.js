@@ -60,10 +60,17 @@ Game.prototype.turns = function(request) {
       }
     }
 
-    if (goFish.length === 0) {
-      var draw = this.deck.pop(0);
+
+
+    var draw = [];
+  //  debugger;
+    if (goFish.length === 0 && this.deck.length > 0) {
+      draw = this.deck.pop(0);
       player1.hand.push(draw);
+      console.log(draw);
       checkBook(player1.hand, draw.rank, "Player 1");
+    } else {
+      this.currentPlayer = player2;
     }
 
     this.currentPlayer = player2;
@@ -82,16 +89,25 @@ Game.prototype.turns = function(request) {
       }
     }
 
-    if (goFish2.length === 0) {
-      var draw = this.deck.pop(0);
-      player2.hand.push(draw);
-      checkBook(player2.hand, draw.rank, "Computer");
+    var draw2 = [];
+    if (goFish2.length === 0 && this.deck.length > 0) {
+      draw2 = this.deck.pop(0);
+      player2.hand.push(draw2);
+      checkBook(player2.hand, draw2.rank, "Computer");
+    } else {
+      this.currentPlayer = player1;
     }
 
   }
   this.currentPlayer = player1;
+  console.log("Player 1 length" + player1.hand.length);
+  console.log("Player 2 length" + player2.hand.length);
+  console.log("deck" + this.deck.length);
 
 }
+
+var player1Counter = 0;
+var player2Counter = 0;
 
 function checkBook(hand, rank, player) {
   var book = [];
@@ -104,25 +120,29 @@ function checkBook(hand, rank, player) {
 
   console.log(book);
   if (book.length === 4 && player === "Player 1") {
-    console.log(hand);
     alert("You created a book of " + rank + "'s!");
-    // hand.forEach(function(card) {
-    //   if (card.rank === rank) {
-    //     hand.splice(card, 1);
+    player1Counter++;
+    console.log("Player 1 counter: " + player1Counter);
+
+    // for (var e = 0; e < hand.length; e++) {
+    //   if (hand[e].rank === rank) {
+    //     console.log(hand[e]);
+    //     hand.splice(e, 1);
     //   }
-    //
-    //
-    // });
-    for (var e = 0; e < hand.length; e++) {
-      if (hand[e].rank === rank) {
-        debugger;
-        console.log(hand[e]);
-        hand.splice(e, 1);
-      }
-    }
+    // }
     console.log(hand);
   } else if (book.length === 4 & player === "Computer") {
     alert("Computer create a book of " + rank + "'s!")
+    player2Counter++;
+    console.log("Player 2 counter: " + player2Counter);
+  }
+
+  if (player1Counter >= 7) {
+    alert("Player 1 Wins!")
+  }
+
+  if (player2Counter >= 7) {
+    alert("Player 2 Wins!")
   }
 }
 
@@ -142,39 +162,78 @@ $(document).ready(function(){
     game.turns("2");
     // input
     game.turns("3");
+    game.turns("4");
+    // input
+    game.turns("5");
+    game.turns("6");
+    // input
+    game.turns("7");
+    game.turns("8");
+    game.turns("9");
+    game.turns("10");
+    // input
+    game.turns("Jack");
+    game.turns("Queen");
+    // input
+    game.turns("King");
+    game.turns("Ace");
+    // input
     game.turns("2");
     // input
     game.turns("3");
+    game.turns("4");
+    // input
+    game.turns("5");
+    game.turns("6");
+    // input
+    game.turns("7");
+    game.turns("8");
+    game.turns("9");
+    game.turns("10");
+    // input
+    game.turns("Jack");
+    game.turns("Queen");
+    // input
+    game.turns("King");
+    game.turns("Ace");
+
     game.turns("2");
     // input
     game.turns("3");
-    game.turns("2");
-    game.turns("3");
+    game.turns("4");
+    // input
+    game.turns("5");
+    game.turns("6");
+    // input
+    game.turns("7");
+    game.turns("8");
+    game.turns("9");
+    game.turns("10");
+    // input
+    game.turns("Jack");
+    game.turns("Queen");
+    // input
+    game.turns("King");
+    game.turns("Ace");
+
     game.turns("2");
     // input
     game.turns("3");
-    game.turns("2");
+    game.turns("4");
     // input
-    game.turns("3");
-    game.turns("2");
+    game.turns("5");
+    game.turns("6");
     // input
-    game.turns("3");
-    game.turns("2");
+    game.turns("7");
+    game.turns("8");
+    game.turns("9");
+    game.turns("10");
     // input
-    game.turns("3");
-    game.turns("2");
+    game.turns("Jack");
+    game.turns("Queen");
     // input
-    game.turns("3");
-    game.turns("2");
-    // input
-    game.turns("3");
-    game.turns("2");
-    // input
-    game.turns("3");
-    game.turns("2");
-    // input
-    game.turns("3");
-    game.turns("2");
+    game.turns("King");
+    game.turns("Ace");
     // input
     // input
   });
