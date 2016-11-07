@@ -48,14 +48,23 @@ Game.prototype.deal = function() {
   this.currentPlayer = player1;
 }
 
+var goFish = [];
+
 Game.prototype.turns = function(request) {
   if (this.currentPlayer === player1) {
     for (var i = 0; i < player2.hand.length; i++) {
       if (player2.hand[i].rank === request) {
         console.log("hit!");
         player1.hand.push(player2.hand[i]);
+        goFish.push(player2.hand[i]);
+        player2.hand.splice(i, 1);
         console.log(player1);
+        console.log(player2);
       }
+    }
+
+    if (goFish.length === 0) {
+      console.log("it worked");
     }
   }
 }
@@ -72,6 +81,7 @@ $(document).ready(function(){
     var game = new Game();
     game.makeDeck();
     game.deal();
-    game.turns("2"); ///this will take input eventually//
+    game.turns("2");
+    ///this will take input eventually//
   });
 });
