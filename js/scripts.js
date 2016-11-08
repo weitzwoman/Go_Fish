@@ -62,7 +62,6 @@ var player1TurnResult = "";
 var player2TurnResult = "";
 
 Game.prototype.turns = function(request) {
-  //debugger;
   if (this.currentPlayer === player1) {
     var goFish = [];
     for (var i = 0; i < player2.hand.length; i++) {
@@ -84,8 +83,9 @@ Game.prototype.turns = function(request) {
       player1.hand.push(draw);
       player1TurnResult = "GO FISH! You drew a " + draw.rank + " of " + draw.suit + " from the deck!";
       checkBook(player1.hand, draw.rank, "Player 1");
-    } else {
+    } else if (goFish.length === 0 && this.deck.length === 0) {
       this.currentPlayer = player2;
+      player1TurnResult = "Homer didn't have any " + request + "s and the deck is empty. It's Homer's turn.";
     }
 }
     this.currentPlayer = player2;
@@ -111,8 +111,9 @@ Game.prototype.turns = function(request) {
       player2.hand.push(draw2);
       player2TurnResult = "Homer had to go fish and drew a " + draw2.rank + " of " + draw2.suit + " from the deck!";
       checkBook(player2.hand, draw2.rank, "Computer");
-    } else {
+    } else if (goFish2.length === 0 && this.deck.length === 0) {
       this.currentPlayer = player1;
+      player2TurnResult = "You didn't have any " + computerRequest.rank + "s for Homer and the deck is empty. It's your turn.";
     }
 
   }
