@@ -54,8 +54,6 @@ Game.prototype.deal = function() {
     var card1 = player1.hand[i].rank + " of " + player1.hand[i].suit;
     output += card1 + " ";
   }
-
-  return output;
 }
 
 var player1TurnResult = "";
@@ -71,6 +69,7 @@ Game.prototype.turns = function(request) {
         player1TurnResult = "Hit! You got a " + player2.hand[i].rank + " from Homer!";
         player2.hand.splice(i, 1);
         checkBook(player1.hand, request, "Player 1");
+
       }
     }
 
@@ -87,7 +86,12 @@ Game.prototype.turns = function(request) {
       this.currentPlayer = player2;
       player1TurnResult = "Homer didn't have any " + request + "s and the deck is empty. It's Homer's turn.";
     }
-}
+  }
+  output = "";
+  for (var i=0; i<player1.hand.length; i++) {
+    var card1 = player1.hand[i].rank + " of " + player1.hand[i].suit;
+    output += card1 + " ";
+  }
     this.currentPlayer = player2;
 
 
@@ -121,6 +125,7 @@ Game.prototype.turns = function(request) {
 
   // var turnOutput = "You got a " + draw.rank + " of " + draw.suit;
   // return turnOutput;
+
 
 }
 
@@ -172,8 +177,8 @@ $(document).ready(function(){
   $("#newGame").click(function(){
     var game = new Game();
     game.makeDeck();
-    var hand = game.deal();
-    $("#userCardHand").text(hand);
+    game.deal();
+    $("#userCardHand").text(output);
     $("#dialogueBox").append("You created a new game! You are playing Go Fish against: Homer." + "<br>" + "What is your guess?");
     //$("#dialogueBox").append("What is your guess?");
 
@@ -186,6 +191,7 @@ $(document).ready(function(){
       var turn = game.turns(guess);
       $("#player1Turn").text(player1TurnResult);
       $("#player2Turn").text(player2TurnResult);
+      $("#userCardHand").text(output);
       console.log(player1.hand);
       console.log(player2.hand);
       $("#userScore").text(player1Counter);

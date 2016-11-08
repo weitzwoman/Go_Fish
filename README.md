@@ -2,7 +2,7 @@
 
 #### _A web application for the classic card game. Suitable for all ages. Player interacts with computer opponent. Team Week Project, Intro to Programming at Epicodus 11/7/2016_
 
-#### By _**Jonathan Thom, Michelle Llaguno, Tracie Weitzman, and Justin Xu**_
+#### By _**Jonathan Thom, Michelle Llaguno, and Tracie Weitzman**_
 
 ## Specifications
 
@@ -56,7 +56,7 @@ Output: Player Wins!
 
 ## Support and contact details
 
-_Contact us on Github at jonathanwthom, weitzwoman, gitmichelle, sbsuf._
+_Contact us on Github at jonathanwthom, weitzwoman, gitmichelle._
 
 ## Technologies Used
 
@@ -75,4 +75,4 @@ Go-Fish is distributed in the hope that it will be useful, but WITHOUT ANY WARRA
 
 You should have received a copy of the GNU General Public License along with the Go-Fish. If not, see http://www.gnu.org/licenses/._
 
-Copyright (c) 2016 **_Jonathan Thom, Michelle Llaguno, Tracie Weitzman and Justin Xu_**
+Copyright (c) 2016 **_Jonathan Thom, Michelle Llaguno, and Tracie Weitzman_**
