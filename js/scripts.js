@@ -58,34 +58,38 @@ Game.prototype.deal = function() {
   return output;
 }
 
-
+var player1TurnResult = "";
+var player2TurnResult = "";
 
 Game.prototype.turns = function(request) {
+  //debugger;
   if (this.currentPlayer === player1) {
     var goFish = [];
     for (var i = 0; i < player2.hand.length; i++) {
       if (player2.hand[i].rank === request) {
         player1.hand.push(player2.hand[i]);
         goFish.push(player2.hand[i]);
+        player1TurnResult = "Hit! You got a " + player2.hand[i].rank + " from Homer!";
         player2.hand.splice(i, 1);
         checkBook(player1.hand, request, "Player 1");
-        return "Hit";
       }
     }
+
+
 
     var draw = [];
   //  debugger;
     if (goFish.length === 0 && this.deck.length > 0) {
       draw = this.deck.pop(0);
       player1.hand.push(draw);
+      player1TurnResult = "GO FISH! You drew a " + draw.rank + " of " + draw.suit + " from the deck!";
       checkBook(player1.hand, draw.rank, "Player 1");
-      return "Go Fish";
     } else {
       this.currentPlayer = player2;
     }
-
+}
     this.currentPlayer = player2;
-  }
+
 
   if (this.currentPlayer === player2) {
     var computerRequest = player2.hand[Math.floor(Math.random() * player2.hand.length)];
@@ -95,6 +99,7 @@ Game.prototype.turns = function(request) {
       if (player1.hand[i].rank === computerRequest.rank) {
         player2.hand.push(player1.hand[i]);
         goFish2.push(player1.hand[i]);
+        player2TurnResult = "Hit! Homer got a " + player1.hand[i].rank + " from your hand.";
         player1.hand.splice(i, 1);
         checkBook(player2.hand, computerRequest, "Computer");
       }
@@ -104,6 +109,7 @@ Game.prototype.turns = function(request) {
     if (goFish2.length === 0 && this.deck.length > 0) {
       draw2 = this.deck.pop(0);
       player2.hand.push(draw2);
+      player2TurnResult = "Homer had to go fish and drew a " + draw2.rank + " of " + draw2.suit + " from the deck!";
       checkBook(player2.hand, draw2.rank, "Computer");
     } else {
       this.currentPlayer = player1;
@@ -111,6 +117,9 @@ Game.prototype.turns = function(request) {
 
   }
   this.currentPlayer = player1;
+
+  // var turnOutput = "You got a " + draw.rank + " of " + draw.suit;
+  // return turnOutput;
 
 }
 
@@ -170,9 +179,14 @@ $(document).ready(function(){
       event.preventDefault();
       var guess = $("#userGuess").val();
       console.log(guess);
-      game.turns(guess);
+      var turn = game.turns(guess);
+      $("#player1Turn").text(player1TurnResult);
+      $("#player2Turn").text(player2TurnResult);
+      console.log(player1.hand);
+      console.log(player2.hand);
       $("#userScore").text(player1Counter);
       $("#computerScore").text(player2Counter);
+
     });
 
   });
