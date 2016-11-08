@@ -73,8 +73,6 @@ Game.prototype.turns = function(request) {
       }
     }
 
-
-
     var draw = [];
   //  debugger;
     if (goFish.length === 0 && this.deck.length > 0) {
@@ -158,11 +156,13 @@ var player2 = new Player();
 
 
 $(document).ready(function(){
-  $("#test").click(function(){
+  $("#newGame").click(function(){
     var game = new Game();
     game.makeDeck();
     var hand = game.deal();
     $("#userCardHand").text(hand);
+    $("#dialogueBox").append("You created a new game! You are playing Go Fish against: Homer." + "<br>" + "What is your guess?");
+    //$("#dialogueBox").append("What is your guess?");
 
 
 
