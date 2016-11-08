@@ -29,3 +29,7 @@ body {
 #player1Winner, #player2Winner {
   display: none;
 }
+
+#resize {
+  width: 9%;
+}

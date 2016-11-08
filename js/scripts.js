@@ -1,9 +1,10 @@
 var suits = ["Hearts", "Diamonds", "Spades", "Clubs"];
 var ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"];
 
-function Card(suit,rank) {
+function Card(suit,rank, image) {
   this.suit = suit;
   this.rank = rank;
+  this.image = image;
 }
 
 function Game() {
@@ -18,10 +19,13 @@ function Player() {
 Game.prototype.makeDeck = function() {
   for (var i = 0; i < suits.length; i++) {
    for (var j = 0; j < ranks.length; j++) {
-        var newCard = new Card(suits[i], ranks[j]);
+        var image = "img/"+ranks[j]+suits[i]+".png";
+        var newCard = new Card(suits[i], ranks[j], image);
         this.deck.push(newCard);
       }
     }
+
+
   var k = 0;
   var l = 0;
   var temp = null;
@@ -179,7 +183,8 @@ $(document).ready(function(){
     game.makeDeck();
     game.deal();
     $("#userCardHand").text(output);
-    $("#dialogueBox").append("You created a new game! You are playing Go Fish against: Homer." + "<br>" + "What is your guess?");
+    $("#dialogueBox").text("You created a new game! You are playing Go Fish against: Homer.");
+    $("#guessDialogue").text("What is your guess?");
     //$("#dialogueBox").append("What is your guess?");
 
 
@@ -194,10 +199,15 @@ $(document).ready(function(){
       $("#userCardHand").text(output);
       console.log(player1.hand);
       console.log(player2.hand);
+      $("#dialogueBox").hide();
       $("#userScore").text(player1Counter);
       $("#computerScore").text(player2Counter);
       $("#bookCreated1").text(bookCreated1);
       $("#bookCreated2").text(bookCreated2);
+      for (var a = 0; a < player1.hand.length; a++) {
+        $("#cardTest").html("<img src='img/" + player1.hand[a].rank + player1.hand[a].suit + ".png' id='resize'>");
+      }
+
       if (player1Wins === true) {
         $("#player1Winner").show();
       } else if (player2Wins === true) {
