@@ -126,6 +126,8 @@ Game.prototype.turns = function(request) {
 
 var player1Counter = 0;
 var player2Counter = 0;
+var bookCreated1 = "";
+var bookCreated2 = "";
 
 function checkBook(hand, rank, player) {
   var book = [];
@@ -137,7 +139,7 @@ function checkBook(hand, rank, player) {
   }
 
   if (book.length === 4 && player === "Player 1") {
-    alert("You created a book of " + rank + "'s!");
+    bookCreated1 = "You created a book of " + rank + "'s!";
     player1Counter++;
 
     // for (var e = 0; e < hand.length; e++) {
@@ -147,7 +149,7 @@ function checkBook(hand, rank, player) {
     //   }
     // }
   } else if (book.length === 4 & player === "Computer") {
-    alert("Computer create a book of " + rank + "'s!")
+    bookCreated2 = "Homer created a book of " + rank + "'s!";
     player2Counter++;
   }
 
@@ -187,6 +189,8 @@ $(document).ready(function(){
       console.log(player2.hand);
       $("#userScore").text(player1Counter);
       $("#computerScore").text(player2Counter);
+      $("#bookCreated1").text(bookCreated1);
+      $("#bookCreated2").text(bookCreated2);
 
     });
 
