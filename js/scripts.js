@@ -171,7 +171,8 @@ $(document).ready(function(){
       var guess = $("#userGuess").val();
       console.log(guess);
       game.turns(guess);
-
+      $("#userScore").text(player1Counter);
+      $("#computerScore").text(player2Counter);
     });
 
   });
