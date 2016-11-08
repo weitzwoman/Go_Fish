@@ -1,87 +1,46 @@
-<!DOCTYPE html>
 <html>
   <head>
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
     <script src="js/jquery-3.1.1.js"></script>
     <script src="js/scripts.js"></script>
-    <title>Go Fish</title>
+    <title>Go Fish - Play the Game!</title>
   </head>
   <body>
-    <div id="test">
-      <input id="userGuess" class="form-control">
-      Test
-    </div>
     <div class="container">
       <div class="row">
-        <div class="col-md-8">
-          <!--  -->empty column
+        <div class="col-md-6">
+          <div class="leftside">
+            <div class="panel panel-default">
+              <div class="panel-heading">Game Rules:</div>
+                <div class="panel-body">
+                  <ul>
+                    <li>Each player gets five cards. If you are dealt a four of a kind, or get four of a kind during game play, those cards are removed from your hand, and turned into a book.</li>
+                    <li>When it’s your turn, ask Homer for a rank of card that you need (e.g. 2, 7, King, etc.). If Homer has the card you want, he must pass it over. If not, you must "Go Fish" and draw a card from the deck.</li>
+                    <li>Then, Homer will ask you for a rank of card. If you have it, you must fork it over. If not, Homer will "Go Fish!"</li>
+                    <li>If either player has to "Go Fish," but the deck is empty, it becomes the other player's turn.</li>
+                    <li>The game ends when one player wins by compiling 7 books.</li>
+                  </ul>
+                </div>
+            </div>
+          </div>
         </div>
-        <div class="col-md-4">
-          <!--  -->enter computer hand
-          <span id="computerCards"></span>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <!--  -->user info
-          <span id="userSets">Sets:</span>
-          <span id="userGamesWon">Games Won:</span>
-        </div>
-        <div class="col-md-4">
-          <!--  -->fish deck
-          <span id="cardsToDraw"></span>
-        </div>
-        <div class="col-md-4">
-          <!--  -->computer info
-          <span id="computerSets">Sets:</span>
-          <span id="computerGamesWon">Games Won:</span>
-        </div>
-      </div>
-      <div class="row">
-        <!--  -->dialogue box- center
-        <form>
-          <input id="userGuess">
-          <button type="submit" id="guessButton">Guess</button>
-        </form>
-
-        <div id="userCardsRequest"><p>Which suit would you like to ask for?</p>
-          <span id="ask-1">Ace</span>
-          <span id="ask-2">2</span>
-          <span id="ask-3">3</span>
-          <span id="ask-4">4</span>
-          <span id="ask-5">5</span>
-          <span id="ask-6">6</span>
-          <span id="ask-7">7</span>
-          <span id="ask-8">8</span>
-          <span id="ask-9">9</span>
-          <span id="ask-10">10</span>
-          <span id="ask-11">J</span>
-          <span id="ask-12">Q</span>
-          <span id="ask-13">K</span>
-        </div>
-
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <!--  -->user deck
-          <span id="userCardHand"></span>
-        </div>
-        <div class="col-md-4">
-          <!--  -->go fish button
-          <span class="goFishButton"><button type="button" class="btn btn-default btn-lg">Go Fish</button></span>
-        </div>
-        <div class="col-md-4">
-          <!--  -->fish deck drawn card
-          <span id="userDrawnCard"></span>
-
-          <div class="unicodeCard">&#127165;</div>
-
-          <div class="unicodeCardBack">&#127136;</div>
-
+        <div class="col-md-6">
+          <div class= "rightside">
+            <h1>Play Go Fish</h1>
+            <img src="img/fish.gif" alt="image of Simpsons fish">
+            <br>
+            <span class="goFishButton"><a href="game.html"><button type="button" class="btn btn-default btn-lg">Play!</button></a></span>
+          </div>
         </div>
       </div>
-    </div>-->
-
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div id="footer">
+            <div id="imginthefooter"><img src="img/waves.jpeg" id="waves" alt="image waves"></div>
+        </div>
+      </div>
+    </div>​​​​​​​​​
   </body>
 </html>
