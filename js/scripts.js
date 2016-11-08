@@ -154,17 +154,18 @@ function checkBook(hand, rank, player) {
   }
 
   if (player1Counter >= 7) {
-    alert("Player 1 Wins!")
+    player1Wins = true;
   }
 
   if (player2Counter >= 7) {
-    alert("Player 2 Wins!")
+    player2Wins = true;
   }
 }
 
 var player1 = new Player();
 var player2 = new Player();
-
+var player1Wins;
+var player2Wins;
 
 
 $(document).ready(function(){
@@ -191,6 +192,11 @@ $(document).ready(function(){
       $("#computerScore").text(player2Counter);
       $("#bookCreated1").text(bookCreated1);
       $("#bookCreated2").text(bookCreated2);
+      if (player1Wins === true) {
+        $("#player1Winner").show();
+      } else if (player2Wins === true) {
+        $("#player2Winner").show();
+      }
 
     });
 

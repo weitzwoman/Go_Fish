@@ -25,3 +25,7 @@ body {
   margin-top: 100px;
   margin-left: 5px;
 }
+
+#player1Winner, #player2Winner {
+  display: none;
+}
