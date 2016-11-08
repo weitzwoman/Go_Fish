@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html >
   <head>
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
@@ -8,21 +8,29 @@
     <title>Go Fish</title>
   </head>
   <body>
-    <button class="form-control" id="newGame">Click to begin a new game!</button>
+    <div class="container">
+      <button class="form-control" id="newGame">Click to begin a new game!</button>
 
-    <div id="dialogueBox" class="well">
+      <div id="dialogueBox" class="well">
+      </div>
+
+      <form>
+        <input id="userGuess" type="text">
+        <button type="submit">Guess</button>
+      </form>
+
+      <div class="well">
+        <h3>This is your current hand:</h3>
+        <h5 id="userCardHand"></h5>
+      </div>
     </div>
-
-    <form>
-      <input id="userGuess" type="text">
-      <button type="submit">Guess</button>
-    </form>
-
-    <div class="well">
-      <h3>This is your current hand:</h3>
-      <h5 id="userCardHand"></h5>
-    </div>
-
+    <div class="row">
+      <div class="col-lg-12">
+        <div id="footer">
+            <div id="imginthefooter"><img src="img/waves.jpeg" id="waves" alt="image waves"></div>
+        </div>
+      </div>
+    </div>​​​​​​​​​
 
   </body>
 </html>
