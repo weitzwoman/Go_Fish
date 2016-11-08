@@ -13,3 +13,15 @@ body {
 #waves{
   width: 100%;
 }
+
+
+.rightside {
+  margin-top: 75px;
+  margin-left: 20px;
+  text-align: center;
+}
+
+.leftside {
+  margin-top: 100px;
+  margin-left: 5px;
+}
