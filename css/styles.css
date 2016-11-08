@@ -5,3 +5,11 @@
 .unicodeCardBack {
   font-size: 100px;
 }
+
+body {
+  background-color: #F9F9F9;
+}
+
+#waves{
+  width: 100%;
+}
