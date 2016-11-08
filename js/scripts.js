@@ -80,7 +80,6 @@ Game.prototype.turns = function(request) {
     if (goFish.length === 0 && this.deck.length > 0) {
       draw = this.deck.pop(0);
       player1.hand.push(draw);
-      console.log(draw);
       checkBook(player1.hand, draw.rank, "Player 1");
       return "Go Fish";
     } else {
@@ -164,9 +163,16 @@ $(document).ready(function(){
     game.makeDeck();
     var hand = game.deal();
     $("#userCardHand").text(hand);
-    var guess = $("#userGuess").val();
-    game.turns(guess);
-    $("#output").text();
+
+
+
+    $("form").submit(function(event){
+      event.preventDefault();
+      var guess = $("#userGuess").val();
+      console.log(guess);
+      game.turns(guess);
+
+    });
 
   });
 });
