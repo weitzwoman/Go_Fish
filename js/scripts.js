@@ -117,7 +117,7 @@ Game.prototype.turns = function(request) {
     if (goFish2.length === 0 && this.deck.length > 0) {
       draw2 = this.deck.pop(0);
       player2.hand.push(draw2);
-      player2TurnResult = "Homer had to go fish and drew a " + draw2.rank + " of " + draw2.suit + " from the deck!";
+      player2TurnResult = "Homer had to go fish and drew from the deck!";
       checkBook(player2.hand, draw2.rank, "Computer");
     } else if (goFish2.length === 0 && this.deck.length === 0) {
       this.currentPlayer = player1;
@@ -185,8 +185,8 @@ $(document).ready(function(){
 
     var showCards = "";
     for (var a = 0; a < player1.hand.length; a++) {
-      var cardImage = "<img src='img/" + player1.hand[a].rank + player1.hand[a].suit + ".png' id='resize'>";
-      showCards += cardImage;
+      var cardImage = "<input type='radio' name='cards' value='" + player1.hand[a].rank + "'><img src='img/" + player1.hand[a].rank + player1.hand[a].suit + ".png' id='resize'>";
+        showCards += cardImage;
     }
     $("#userCardHand").html(showCards);
     $("#dialogueBox").text("You created a new game! You are playing Go Fish against: Homer.");
@@ -197,7 +197,7 @@ $(document).ready(function(){
 
     $("form").submit(function(event){
       event.preventDefault();
-      var guess = $("#userGuess").val();
+      var guess = $("input:radio[name=cards]:checked").val();
       console.log(guess);
       var turn = game.turns(guess);
       $("#player1Turn").text(player1TurnResult);
@@ -212,8 +212,8 @@ $(document).ready(function(){
       $("#bookCreated2").text(bookCreated2);
       var showCards = "";
       for (var a = 0; a < player1.hand.length; a++) {
-        var cardImage = "<img src='img/" + player1.hand[a].rank + player1.hand[a].suit + ".png' id='resize'>";
-        showCards += cardImage;
+        var cardImage = "<input type='radio' name='cards' value='" + player1.hand[a].rank + "'><img src='img/" + player1.hand[a].rank + player1.hand[a].suit + ".png' id='resize'>";
+          showCards += cardImage;
       }
       $("#userCardHand").html(showCards);
 
