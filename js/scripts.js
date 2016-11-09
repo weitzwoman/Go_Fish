@@ -149,7 +149,7 @@ function checkBook(hand, rank, player) {
     player2Counter++;
   }
 
-  if (player1Counter >= 7) {
+  if (player1Counter >= 1) {
     player1Wins = true;
   }
 
@@ -207,10 +207,15 @@ $(document).ready(function(){
 
       if (player1Wins === true) {
         $("#player1Winner").show();
+        $(".playerWell").hide();
       } else if (player2Wins === true) {
         $("#player2Winner").show();
+        $(".playerWell").hide();
       }
 
+      $(".newGameButton").click(function(){
+        document.location.reload(true);
+      });
     });
 
   });

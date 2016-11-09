@@ -61,4 +61,8 @@ body {
 
 #player1Winner, #player2Winner {
   display: none;
+  margin-top: 10px;
+  text-align: center;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 70px;
 }
