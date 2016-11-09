@@ -14,6 +14,13 @@ body {
   width: 100%;
 }
 
+.well {
+  border-color: #5bc0de;
+}
+
+#guessButton {
+  font-family: 'Gloria Hallelujah', cursive;
+}
 
 .rightside {
   margin-top: 75px;
@@ -56,4 +63,12 @@ body {
 .turn {
   height: 300px;
   overflow: hidden;
+}
+
+.goFishButton {
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+.panel {
+  border-color: #5bc0de;
 }
