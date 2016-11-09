@@ -183,7 +183,6 @@ $(document).ready(function(){
     $("#homerCards").text(player2.hand.length);
     $("#userCardHand").html(showCards);
     $("#dialogueBox").text("You created a new game! You are playing Go Fish against: Homer.");
-    $("#guessDialogue").text("What is your guess?");
     $("#newGame").hide();
     $(".playerWell").show();
     $("#homerPic").html("<img src='img/homer.png' alt='picture of Homer with donut' class='donut'>");
