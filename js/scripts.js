@@ -181,6 +181,7 @@ $(document).ready(function(){
     $("#dialogueBox").text("You created a new game! You are playing Go Fish against: Homer.");
     $("#guessDialogue").text("What is your guess?");
     $("#newGame").hide();
+    $(".playerWell").show();
 
 
     $("form").submit(function(event){

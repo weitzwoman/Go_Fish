@@ -1,25 +1,12 @@
-.unicodeCard {
-  font-size: 100px;
-}
-
-.unicodeCardBack {
-  font-size: 100px;
-}
-
 body {
   background-image: url(../img/simpsonsbackground.jpg);
+  font-family: 'Open Sans', sans-serif;
 }
 
-#waves{
-  width: 100%;
-}
+/*landing page*/
 
-.well {
+.panel {
   border-color: #5bc0de;
-}
-
-#guessButton {
-  font-family: 'Gloria Hallelujah', cursive;
 }
 
 .rightside {
@@ -33,19 +20,7 @@ body {
   margin-left: 5px;
 }
 
-#player1Winner, #player2Winner {
-  display: none;
-}
-
-#resize {
-  width: 10%;
-  padding-right: 15px;
-  padding-left: 3px;
-}
-
-.playerWell {
-  text-align: center;
-}
+/*game page*/
 
 .newGame {
   margin-top: 10px;
@@ -55,9 +30,8 @@ body {
   font-size: 70px;
 }
 
-.donut {
-  width: 40%;
-  float: right;
+.well {
+  border-color: #5bc0de;
 }
 
 .turn {
@@ -65,10 +39,26 @@ body {
   overflow: hidden;
 }
 
-.goFishButton {
+.donut {
+  width: 40%;
+  float: right;
+}
+
+.playerWell {
+  text-align: center;
+  display: none;
+}
+
+#guessButton, .goFishButton {
   font-family: 'Gloria Hallelujah', cursive;
 }
 
-.panel {
-  border-color: #5bc0de;
+#resize {
+  width: 10%;
+  padding-right: 15px;
+  padding-left: 3px;
+}
+
+#player1Winner, #player2Winner {
+  display: none;
 }
