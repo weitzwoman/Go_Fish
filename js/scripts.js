@@ -204,9 +204,12 @@ $(document).ready(function(){
       $("#computerScore").text(player2Counter);
       $("#bookCreated1").text(bookCreated1);
       $("#bookCreated2").text(bookCreated2);
+      var showCards = "";
       for (var a = 0; a < player1.hand.length; a++) {
-        $("#cardTest").html("<img src='img/" + player1.hand[a].rank + player1.hand[a].suit + ".png' id='resize'>");
+        var cardImage = "<img src='img/" + player1.hand[a].rank + player1.hand[a].suit + ".png' id='resize'>";
+        showCards += cardImage;
       }
+      $("#cardTest").html(showCards);
 
       if (player1Wins === true) {
         $("#player1Winner").show();
