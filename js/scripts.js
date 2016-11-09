@@ -123,14 +123,8 @@ Game.prototype.turns = function(request) {
       this.currentPlayer = player1;
       player2TurnResult = "You didn't have any " + computerRequest.rank + "s for Homer and the deck is empty. It's your turn.";
     }
-
   }
   this.currentPlayer = player1;
-
-  // var turnOutput = "You got a " + draw.rank + " of " + draw.suit;
-  // return turnOutput;
-
-
 }
 
 var player1Counter = 0;
@@ -150,13 +144,6 @@ function checkBook(hand, rank, player) {
   if (book.length === 4 && player === "Player 1") {
     bookCreated1 = "You created a book of " + rank + "'s!";
     player1Counter++;
-
-    // for (var e = 0; e < hand.length; e++) {
-    //   if (hand[e].rank === rank) {
-    //     console.log(hand[e]);
-    //     hand.splice(e, 1);
-    //   }
-    // }
   } else if (book.length === 4 & player === "Computer") {
     bookCreated2 = "Homer created a book of " + rank + "'s!";
     player2Counter++;
@@ -176,7 +163,7 @@ var player2 = new Player();
 var player1Wins;
 var player2Wins;
 
-
+// UI
 $(document).ready(function(){
   $("#newGame").click(function(){
     var game = new Game();
@@ -188,11 +175,10 @@ $(document).ready(function(){
       var cardImage = "<input type='radio' name='cards' value='" + player1.hand[a].rank + "'><img src='img/" + player1.hand[a].rank + player1.hand[a].suit + ".png' id='resize'>";
         showCards += cardImage;
     }
+    $("#deckCount").text(game.deck.length);
     $("#userCardHand").html(showCards);
     $("#dialogueBox").text("You created a new game! You are playing Go Fish against: Homer.");
     $("#guessDialogue").text("What is your guess?");
-    //$("#dialogueBox").append("What is your guess?");
-
 
 
     $("form").submit(function(event){
@@ -209,6 +195,7 @@ $(document).ready(function(){
       $("#userScore").text(player1Counter);
       $("#computerScore").text(player2Counter);
       $("#bookCreated1").text(bookCreated1);
+      $("#deckCount").text(game.deck.length);
       $("#bookCreated2").text(bookCreated2);
       var showCards = "";
       for (var a = 0; a < player1.hand.length; a++) {

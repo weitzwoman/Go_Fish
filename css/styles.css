@@ -31,5 +31,15 @@ body {
 }
 
 #resize {
-  width: 9%;
+  width: 10%;
+  padding-right: 15px;
+  padding-left: 3px;
+}
+
+.playerWell {
+  text-align: center;
+}
+
+.newGame {
+  text-align: center;
 }

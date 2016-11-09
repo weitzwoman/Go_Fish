@@ -9,12 +9,22 @@
   </head>
   <body>
     <div class="container">
-      <button class="form-control" id="newGame">Click to begin a new game!</button>
-
-      <div class="well">Your Book Count: <span id="userScore"></span><br><span id="bookCreated1"></span>
+      <div class="newGame">
+        <button type="button" id="newGame" class="btn btn-info btn-lg">Click to begin a new game!</button>
       </div>
-
-      <div class="well">Homer Book Count: <span id="computerScore"></span><br><span id="bookCreated2"></span>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="well">Your Book Count: <span id="userScore"></span><br><span id="bookCreated1"></span>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="well">Deck Count: <span id="deckCount"></span>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="well">Homer Book Count: <span id="computerScore"></span><br><span id="bookCreated2"></span>
+          </div>
+        </div>
       </div>
 
       <div class="well">
@@ -27,14 +37,12 @@
       <div id="cardTest">
       </div>
 
-      <form>
-        <input id="userGuess" type="text">
-        <button type="submit">Guess</button>
-      </form>
-
-      <div class="well">
+      <div class="well playerWell">
         <h3>This is your current hand:</h3>
         <h5 id="userCardHand"></h5>
+        <form>
+          <button type="submit" class="btn btn-info">Guess</button>
+        </form>
       </div>
 
       <div id="player1Winner">
