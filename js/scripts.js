@@ -1,5 +1,7 @@
 var suits = ["Hearts", "Diamonds", "Spades", "Clubs"];
 var ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"];
+var homerState = "";
+
 
 function Card(suit,rank, image) {
   this.suit = suit;
@@ -110,6 +112,7 @@ Game.prototype.turns = function(request) {
         player2TurnResult = "Hit! Homer got a " + player1.hand[i].rank + " from your hand.";
         player1.hand.splice(i, 1);
         checkBook(player2.hand, computerRequest, "Computer");
+        homerState = "<img src='img/homerwin.png' alt='picture of Homer celebrating' class='donut'>";
       }
     }
 
@@ -119,6 +122,7 @@ Game.prototype.turns = function(request) {
       player2.hand.push(draw2);
       player2TurnResult = "Homer had to go fish and drew from the deck!";
       checkBook(player2.hand, draw2.rank, "Computer");
+      homerState = "<img src='img/doh.png' alt='picture of Homer saying Doh' class='donut'>";
     } else if (goFish2.length === 0 && this.deck.length === 0) {
       this.currentPlayer = player1;
       player2TurnResult = "You didn't have any " + computerRequest.rank + "s for Homer and the deck is empty. It's your turn.";
@@ -149,11 +153,11 @@ function checkBook(hand, rank, player) {
     player2Counter++;
   }
 
-  if (player1Counter >= 1) {
+  if (player1Counter >= 7) {
     player1Wins = true;
   }
 
-  if (player2Counter >= 7) {
+  if (player2Counter >= 1) {
     player2Wins = true;
   }
 }
@@ -182,6 +186,7 @@ $(document).ready(function(){
     $("#guessDialogue").text("What is your guess?");
     $("#newGame").hide();
     $(".playerWell").show();
+    $("#homerPic").html("<img src='img/homer.png' alt='picture of Homer with donut' class='donut'>");
 
 
     $("form").submit(function(event){
@@ -190,7 +195,6 @@ $(document).ready(function(){
       var turn = game.turns(guess);
       $("#player1Turn").text(player1TurnResult);
       $("#player2Turn").text(player2TurnResult);
-      // $("#userCardHand").text(output);
       $("#dialogueBox").hide();
       $("#userScore").text(player1Counter);
       $("#computerScore").text(player2Counter);
@@ -198,6 +202,7 @@ $(document).ready(function(){
       $("#deckCount").text(game.deck.length);
       $("#homerCards").text(player2.hand.length);
       $("#bookCreated2").text(bookCreated2);
+      $("#homerPic").html(homerState);
       var showCards = "";
       for (var a = 0; a < player1.hand.length; a++) {
         var cardImage = "<input type='radio' name='cards' value='" + player1.hand[a].rank + "'><img src='img/" + player1.hand[a].rank + player1.hand[a].suit + ".png' id='resize'>";
@@ -208,9 +213,11 @@ $(document).ready(function(){
       if (player1Wins === true) {
         $("#player1Winner").show();
         $(".playerWell").hide();
+        $("#homerPic").html("<img src='img/doh.png' alt='picture of Homer saying Doh' class='donut'>");
       } else if (player2Wins === true) {
         $("#player2Winner").show();
         $(".playerWell").hide();
+        $("homerPic").html("<img src='img/homerwin.png' alt='picture of Homer celebrating' class='donut'>");
       }
 
       $(".newGameButton").click(function(){
