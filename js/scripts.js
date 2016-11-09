@@ -180,18 +180,16 @@ $(document).ready(function(){
     $("#userCardHand").html(showCards);
     $("#dialogueBox").text("You created a new game! You are playing Go Fish against: Homer.");
     $("#guessDialogue").text("What is your guess?");
+    $("#newGame").hide();
 
 
     $("form").submit(function(event){
       event.preventDefault();
       var guess = $("input:radio[name=cards]:checked").val();
-      console.log(guess);
       var turn = game.turns(guess);
       $("#player1Turn").text(player1TurnResult);
       $("#player2Turn").text(player2TurnResult);
       // $("#userCardHand").text(output);
-      console.log(player1.hand);
-      console.log(player2.hand);
       $("#dialogueBox").hide();
       $("#userScore").text(player1Counter);
       $("#computerScore").text(player2Counter);

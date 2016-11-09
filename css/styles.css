@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #F9F9F9;
+  background-image: url(../img/simpsonsbackground.jpg);
 }
 
 #waves{
@@ -41,9 +41,11 @@ body {
 }
 
 .newGame {
-  margin-top: 50px;
+  margin-top: 10px;
   margin-bottom: 25px;
   text-align: center;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 70px;
 }
 
 .donut {
