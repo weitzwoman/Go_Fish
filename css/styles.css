@@ -44,6 +44,11 @@ body {
   float: right;
 }
 
+.end {
+  width: 40%;
+  margin-bottom: 10px;
+}
+
 .playerWell {
   text-align: center;
   display: none;

@@ -153,11 +153,11 @@ function checkBook(hand, rank, player) {
     player2Counter++;
   }
 
-  if (player1Counter >= 7) {
+  if (player1Counter >= 1) {
     player1Wins = true;
   }
 
-  if (player2Counter >= 1) {
+  if (player2Counter >= 7) {
     player2Wins = true;
   }
 }
@@ -213,11 +213,11 @@ $(document).ready(function(){
       if (player1Wins === true) {
         $("#player1Winner").show();
         $(".playerWell").hide();
-        $("#homerPic").html("<img src='img/doh.png' alt='picture of Homer saying Doh' class='donut'>");
+        $(".turn").hide();
       } else if (player2Wins === true) {
         $("#player2Winner").show();
         $(".playerWell").hide();
-        $("homerPic").html("<img src='img/homerwin.png' alt='picture of Homer celebrating' class='donut'>");
+        $(".turn").hide();
       }
 
       $(".newGameButton").click(function(){
