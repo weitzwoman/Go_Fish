@@ -41,5 +41,17 @@ body {
 }
 
 .newGame {
+  margin-top: 50px;
+  margin-bottom: 25px;
   text-align: center;
+}
+
+.donut {
+  width: 40%;
+  float: right;
+}
+
+.turn {
+  height: 300px;
+
 }
