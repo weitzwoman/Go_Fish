@@ -182,7 +182,13 @@ $(document).ready(function(){
     var game = new Game();
     game.makeDeck();
     game.deal();
-    $("#userCardHand").text(output);
+
+    var showCards = "";
+    for (var a = 0; a < player1.hand.length; a++) {
+      var cardImage = "<img src='img/" + player1.hand[a].rank + player1.hand[a].suit + ".png' id='resize'>";
+      showCards += cardImage;
+    }
+    $("#userCardHand").html(showCards);
     $("#dialogueBox").text("You created a new game! You are playing Go Fish against: Homer.");
     $("#guessDialogue").text("What is your guess?");
     //$("#dialogueBox").append("What is your guess?");
@@ -196,7 +202,7 @@ $(document).ready(function(){
       var turn = game.turns(guess);
       $("#player1Turn").text(player1TurnResult);
       $("#player2Turn").text(player2TurnResult);
-      $("#userCardHand").text(output);
+      // $("#userCardHand").text(output);
       console.log(player1.hand);
       console.log(player2.hand);
       $("#dialogueBox").hide();
@@ -209,7 +215,7 @@ $(document).ready(function(){
         var cardImage = "<img src='img/" + player1.hand[a].rank + player1.hand[a].suit + ".png' id='resize'>";
         showCards += cardImage;
       }
-      $("#cardTest").html(showCards);
+      $("#userCardHand").html(showCards);
 
       if (player1Wins === true) {
         $("#player1Winner").show();
