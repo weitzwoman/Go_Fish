@@ -152,7 +152,6 @@ function checkBook(hand, rank, player) {
     var looped2 = [];
     var eliminate2 = hand.length;
     for (var w=0; w<eliminate2; w++) {
-      debugger;
       if(hand[w].rank === book[0].rank) {
         var extra2 = hand.splice(w, 1);
         looped2.push(extra2);
