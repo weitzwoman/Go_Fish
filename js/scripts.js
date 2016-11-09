@@ -176,6 +176,7 @@ $(document).ready(function(){
         showCards += cardImage;
     }
     $("#deckCount").text(game.deck.length);
+    $("#homerCards").text(player2.hand.length);
     $("#userCardHand").html(showCards);
     $("#dialogueBox").text("You created a new game! You are playing Go Fish against: Homer.");
     $("#guessDialogue").text("What is your guess?");
@@ -196,6 +197,7 @@ $(document).ready(function(){
       $("#computerScore").text(player2Counter);
       $("#bookCreated1").text(bookCreated1);
       $("#deckCount").text(game.deck.length);
+      $("#homerCards").text(player2.hand.length);
       $("#bookCreated2").text(bookCreated2);
       var showCards = "";
       for (var a = 0; a < player1.hand.length; a++) {
