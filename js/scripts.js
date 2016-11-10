@@ -112,7 +112,7 @@ Game.prototype.turns = function(request) {
     if (goFish2.length === 0 && this.deck.length > 0) {
       draw2 = this.deck.pop(0);
       player2.hand.push(draw2);
-      player2TurnResult = "Homer had to go fish and drew from the deck!";
+      player2TurnResult = "Homer asked for " + computerRequest.rank + "s. You didn't have any, so Homer had to Go Fish!";
       checkBook(player2.hand, draw2.rank, "Computer");
       homerState = "<img src='img/doh.png' alt='picture of Homer saying Doh' class='donut'>";
     } else if (goFish2.length === 0 && this.deck.length === 0) {
