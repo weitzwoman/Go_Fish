@@ -13,13 +13,12 @@ Input: click Start game
 Output: five cards shown
 
 #### 3. Draw five cards for the computer and indicate to the user the computer has five mystery cards.
+Output: Computer Card Count: 5
 
 #### 4. Allow the user to ask the computer for a rank of card he/she wants (follows Go Fish standard rules and users are only allowed to ask for cards in his/her hand).
-Input: 4
-Output: 4 of Clubs
 
 #### 4.1. If a match, card is added to user hand. User continues turn.
-Input:
+Input: 4
 Output: 4 of Clubs added to hand
 
 #### 4.2. If not a match, computer tells user to "Go Fish", and user draws random deck card.
@@ -27,14 +26,12 @@ Input: 4
 Output: Not a match! Go Fish
 
 #### 5. Turns are switched; computer asks user for a card.
-Input: 5  
-Output: Player checks to see if they have a 5
 
 #### 5.1. If a match, card is added to computer hand. Computer continues turn.
 Input: User gives up 5
 Output: Card is removed from user's hand
 
-#### 5.2. If not a match, user tells computer to "Go Fish", and computer draws random deck card.
+#### 5.2. If not a match, computer draws random deck card.
 Input: Go Fish
 Output: Computer draws card
 
