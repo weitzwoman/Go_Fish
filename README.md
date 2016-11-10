@@ -47,6 +47,11 @@ Output: Book tally increases
 Input: Book Count is 7
 Output: Player Wins!
 
+## Known Bugs
+#### 1. In some instances, when a book is created, not all cards are removed from the hand.
+
+#### 2. Rarely, win state is not reached when user reaches 7 books.
+
 ## Setup/Installation Requirements
 
 * _Works in any web browser [click here] (https://jonathanwthom.github.io/go-fish) to view on gh-pages._
