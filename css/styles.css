@@ -39,6 +39,10 @@ body {
   overflow: hidden;
 }
 
+.chosen {
+  box-shadow: 5px 5px 5px black;
+}
+
 .donut {
   width: 40%;
   float: right;
@@ -58,10 +62,9 @@ body {
   font-family: 'Gloria Hallelujah', cursive;
 }
 
-#resize {
-  width: 10%;
-  padding-right: 15px;
-  padding-left: 3px;
+.imgResize {
+  width: 50%;
+  margin-top: 5px;
 }
 
 #player1Winner, #player2Winner {

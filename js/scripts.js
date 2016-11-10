@@ -177,7 +177,7 @@ $(document).ready(function(){
     game.deal();
     var showCards = "";
     for (var a = 0; a < player1.hand.length; a++) {
-      var cardImage = "<input type='radio' name='cards' value='" + player1.hand[a].rank + "'><img src='img/" + player1.hand[a].rank + player1.hand[a].suit + ".png' id='resize'>";
+      var cardImage = "<label><input type='radio' name='cards' hidden value='" + player1.hand[a].rank + "'><img class='imgResize' src='img/" + player1.hand[a].rank + player1.hand[a].suit + ".png'></label>";
         showCards += cardImage;
     }
     $("#deckCount").text(game.deck.length);
@@ -188,6 +188,10 @@ $(document).ready(function(){
     $(".playerWell").show();
     $("#homerPic").html("<img src='img/homer.png' alt='picture of Homer with donut' class='donut'>");
 
+    $(".imgResize").click(function(){
+      $(".imgResize").removeClass("chosen");
+      $(this).addClass("chosen");
+    });
     $("form").submit(function(event){
       event.preventDefault();
 
@@ -217,12 +221,17 @@ $(document).ready(function(){
         $("#homerPic").html(homerState);
       }
       window.setTimeout(photoDelay, 2000, homerState);
+
       var showCards = "";
       for (var a = 0; a < player1.hand.length; a++) {
-        var cardImage = "<input type='radio' name='cards' value='" + player1.hand[a].rank + "'><img src='img/" + player1.hand[a].rank + player1.hand[a].suit + ".png' id='resize'>";
+        var cardImage = "<label><input type='radio'name='cards' hidden value='" + player1.hand[a].rank + "'><img class='imgResize' src='img/" + player1.hand[a].rank + player1.hand[a].suit + ".png'></label>";
           showCards += cardImage;
       }
       $("#userCardHand").html(showCards);
+      $(".imgResize").click(function(){
+        $(".imgResize").removeClass("chosen");
+        $(this).addClass("chosen");
+      });
 
       if (player1Wins === true) {
         $("#player1Winner").show();
