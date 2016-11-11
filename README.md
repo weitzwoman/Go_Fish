@@ -54,7 +54,7 @@ Output: Player Wins!
 
 ## Setup/Installation Requirements
 
-* _Works in any web browser [click here] (https://jonathanwthom.github.io/go-fish) to view on gh-pages._
+* _Works in any web browser [click here] (https://jonathanwthom.github.io/Go-Fish/) to view on gh-pages._
 
 ## Support and contact details
 
